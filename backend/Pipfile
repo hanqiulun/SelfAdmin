@@ -6,8 +6,12 @@ verify_ssl = true
 [dev-packages]
 aiohttp = "*"
 aiohttp-cors = "*"
+gunicorn = "*"
 
 [packages]
+aiohttp = "*"
+aiohttp-cors = "*"
+gunicorn = "*"
 
 [requires]
 python_version = "3.7"

@@ -17,13 +17,12 @@ from inspect import isclass
 from aiohttp import web
 from aiohttp.web import Application
 import aiohttp_cors
-
-from settings import *
+from api_server.settings import *
 
 
 def init_routes(app: Application) ->NoReturn:
     # import all current_api_version dir apis
-    module = import_module(f"apis.{CURRENT_API_VERSION}")
+    module = import_module(f"api_server.apis.{CURRENT_API_VERSION}")
     for i in dir(module):
         if not i.startswith("__"):
             object = getattr(module, i)
@@ -46,7 +45,3 @@ def init_app():
     # config routes
     init_routes(app=app)
     return app
-
-
-app = init_app()
-web.run_app(app)

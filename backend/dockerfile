@@ -1,0 +1,29 @@
+# ---- 基础 python 镜像 ----
+FROM python:3.7.2-stretch AS base
+# 创建 app 目录
+WORKDIR /app
+
+# ---- 依赖 ----
+FROM base AS dependencies  
+COPY requirements.txt ./
+# 安装 app 依赖
+RUN pip install -r requirements.txt
+
+# ---- 复制文件并 build ----
+FROM dependencies AS build  
+WORKDIR /app
+COPY . /app
+# 在需要时进行 Build 或 Compile
+
+# --- 使用 Alpine 发布 ----
+FROM python:3.7.2-alpine3.9 AS release  
+# 创建 app 目录
+WORKDIR /app
+
+COPY --from=dependencies /app/requirements.txt ./
+COPY --from=dependencies /root/.cache /root/.cache
+
+# 安装 app 依赖
+RUN pip install -r requirements.txt
+COPY --from=build /app/ ./
+CMD ["gunicorn", "main:app", "-c", "gunicorn.py"]

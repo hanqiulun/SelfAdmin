@@ -41,7 +41,6 @@ class _(
 ):
     async def post(self) -> Response:
         a = web.json_response(d["admin"])
-        print(type(a))
         return web.json_response(d["admin"])
 
 
