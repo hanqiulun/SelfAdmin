@@ -1,0 +1,15 @@
+*.py[cod]
+.vscode/*
+dbs
+.DS_Store
+.idea/*
+.cache
+*.log
+__pycache__
+.pytest_cache
+*.txt
+apks/*
+*.apk
+__pycache__/*
+node_modules/*
+node_modules
