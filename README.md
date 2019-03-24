@@ -1,3 +1,8 @@
+![](https://img.shields.io/badge/build%20-success-brightgreen.svg)
+![](https://img.shields.io/badge/language-python-orange.svg)
+![](https://img.shields.io/aur/license/yaourt.svg)
+
+
 # SelfAdmin
 
 A project home page introducing myself
