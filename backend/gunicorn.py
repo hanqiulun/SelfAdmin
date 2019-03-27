@@ -9,7 +9,7 @@ Last Modified: Monday, 18th March 2019 3:30:36 pm
 '''
 
 import multiprocessing
-bind = '127.0.0.1:8000'
+bind = '0.0.0.0:8080'
 backlog = 512 
 timeout = 30 
 worker_class = 'aiohttp.GunicornWebWorker'

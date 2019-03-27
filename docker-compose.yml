@@ -1,0 +1,28 @@
+version: "3.3"
+
+services:
+  frontend:
+    image: frontend
+    ports:
+      - "80:80"
+    networks:
+      - selfadmin
+    deploy:
+      mode: replicated
+      replicas: 2
+      endpoint_mode: vip
+
+  backend:
+    image: backend
+    networks:
+       - selfadmin
+    ports:
+      - "8080:8080"
+    deploy:
+      mode: replicated
+      replicas: 2
+      endpoint_mode: vip
+
+networks:
+  selfadmin:
+    external: true
